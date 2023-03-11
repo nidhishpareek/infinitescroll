@@ -7,8 +7,6 @@ export default function useContactSearch(pageNumber) {
   const [contacts, setContacts] = useState([]);
   const noOfResults = 10;
   const [seed, setSeed] = useState(undefined);
-  //   params: { q: query, page: pageNumber },
-  //   https://randomuser.me/api/?seed=a7e0b1f3fd1c9621&results=20&page=303
 
   useEffect(() => {
     setLoading(true);

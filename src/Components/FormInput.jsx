@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   FormControl,
   FormErrorMessage,
@@ -12,15 +11,15 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { useFormContext } from "react-hook-form";
+import { AiTwotoneEyeInvisible, AiFillEye } from "react-icons/ai";
 
-import { FaUserCircle } from "react-icons/fa";
-import { RiLockPasswordFill } from "react-icons/ri";
 const FormInput = ({
   name,
   label,
   placeholder,
   asPassword,
   leftIcon,
+  iconColor = "facebook",
   icon,
   ...props
 }) => {
@@ -36,9 +35,9 @@ const FormInput = ({
         <FormLabel htmlFor={name}>{label}</FormLabel>
         <Stack spacing={4}>
           <InputGroup flexGrow={1}>
-            {/* {leftIcon && ( */}
-            <InputLeftElement pointerEvents="none" children={leftIcon} />
-            {/* )} */}
+            {leftIcon && (
+              <InputLeftElement pointerEvents="none" children={leftIcon} />
+            )}
 
             <Input
               name={name}
@@ -49,9 +48,26 @@ const FormInput = ({
               {...register(name)}
             />
             {asPassword && (
-              <InputRightElement width="4.5rem">
-                <Button h="1.75rem" size="sm" onClick={handleClick}>
+              <InputRightElement
+                width={["0.5rem", "4.5rem"]}
+                justifyContent={["right", "center"]}
+              >
+                <Button
+                  h="1.75rem"
+                  size="sm"
+                  onClick={handleClick}
+                  display={["none", "inline"]}
+                >
                   {show ? "Hide" : "Show"}
+                </Button>
+                <Button
+                  h="1rem"
+                  size="sm"
+                  onClick={handleClick}
+                  display={["inline", "none"]}
+                  background="transparent"
+                >
+                  {show ? <AiTwotoneEyeInvisible /> : <AiFillEye />}
                 </Button>
               </InputRightElement>
             )}

@@ -10,7 +10,7 @@ const Home = () => {
 
   const { contacts, loading, error } = useContactSearch(pageNumber);
   const observer = useRef();
-  const lastBookElementRef = useCallback(
+  const lastElementRef = useCallback(
     (node) => {
       if (loading) return;
       if (observer.current) observer.current.disconnect();
@@ -31,7 +31,7 @@ const Home = () => {
           if (contacts.length === index + 1) {
             return (
               <Card
-                ref={lastBookElementRef}
+                ref={lastElementRef}
                 boxShadow="dark-lg"
                 p="0.5rem"
                 key={uuidv4()}
